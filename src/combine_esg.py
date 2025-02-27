@@ -76,8 +76,8 @@ def combine_esg_scores(directory, output_file):
     output_df.to_csv(output_file, index=False)
 
 
-DIRECTORY = "./csv."
-OUTPUT_FILE = "./csv/combined_esg_scores.csv"
+DIRECTORY = "./csv/2014_2018/"
+OUTPUT_FILE = "./csv/2014_2018_combined_esg_scores.csv"
 
 combine_esg_scores(DIRECTORY, OUTPUT_FILE)
 

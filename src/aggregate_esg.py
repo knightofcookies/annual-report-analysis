@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 # Define the directory where the CSV files are stored
-directory = "csv/"
+directory = "csv/2014_2018"
 
 # Use glob to find all files containing "esg_scores_with_confidence"
 file_pattern = os.path.join(directory, "*esg_scores_with_confidence*.csv")
@@ -26,7 +26,8 @@ combined_df = pd.concat(dfs, ignore_index=True)
 
 # --- Calculate Average Confidence and Binary Values Per Group (Efficiently) ---
 
-confidence_cols = [f"conf_q{i}" for i in range(1, 118)]
+# confidence_cols = [f"conf_q{i}" for i in range(1, 118)]
+confidence_cols = [f"conf_q{i}" for i in range(1, 70)]
 
 # Group by 'company' and 'year' and calculate the mean of confidence columns
 grouped_df = (
@@ -52,6 +53,6 @@ output_columns = (
 output_df = output_df[output_columns]
 
 # --- Create and save the new DataFrame ---
-output_file = os.path.join(directory, "aggregated_esg_scores_with_confidence.csv")
+output_file = os.path.join(directory, "2014_2018_aggregated_esg_scores_with_confidence.csv")
 output_df.to_csv(output_file, index=False)
 print(f"Aggregated ESG scores with confidence saved to '{output_file}'")
