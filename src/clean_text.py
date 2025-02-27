@@ -4,9 +4,10 @@ import os
 import nltk
 
 nltk.download("punkt")
+nltk.download("punkt_tab")
 
-PARSED_REPORTS_DIR = "../parsed/"
-CLEANED_REPORTS_DIR = "../cleaned/"
+PARSED_REPORTS_DIR = "../parsed/2014-2018/"
+CLEANED_REPORTS_DIR = "../cleaned/2014-2018/"
 
 
 def main():
@@ -23,7 +24,7 @@ def main():
                 PARSED_REPORTS_DIR + directory + "/" + file, "r", encoding="utf-8"
             ) as f:
                 text = f.read()
-                text = text.replace("\n", " ")
+                text = text.replace("\n", " ").strip()
                 tokens = nltk.sent_tokenize(text)
                 with open(
                     CLEANED_REPORTS_DIR + directory + "/" + file, "w", encoding="utf-8"
