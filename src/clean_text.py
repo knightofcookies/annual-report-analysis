@@ -6,7 +6,7 @@ import nltk
 nltk.download("punkt")
 nltk.download("punkt_tab")
 
-PARSED_REPORTS_DIR = "../parsed/2014-2018/"
+PARSED_REPORTS_DIR = "../cleaned/2014-2018/"
 CLEANED_REPORTS_DIR = "../cleaned/2014-2018/"
 
 
@@ -27,7 +27,7 @@ def main():
                 text = text.replace("\n", " ").strip()
                 tokens = nltk.sent_tokenize(text)
                 with open(
-                    CLEANED_REPORTS_DIR + directory + "/" + file, "w", encoding="utf-8"
+                    CLEANED_REPORTS_DIR + directory + "/" + file.replace(".pdf", ""), "w", encoding="utf-8"
                 ) as f:
                     f.write("\n".join(tokens))
 
